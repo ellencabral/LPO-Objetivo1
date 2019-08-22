@@ -1,6 +1,10 @@
 package br.edu.ifsul.model;
 
+import java.util.Objects;
+
 public class Carro {
+    private int id;
+
     private String marca;
     private String modelo;
     private int anoFabricacao;
@@ -8,10 +12,19 @@ public class Carro {
     public Carro() {
     }
 
-    public Carro(String marca, String modelo, int anoFabricacao) {
+    public Carro(int id, String marca, String modelo, int anoFabricacao) {
+        this.id = id;
         this.marca = marca;
         this.modelo = modelo;
         this.anoFabricacao = anoFabricacao;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getMarca() {
@@ -41,9 +54,23 @@ public class Carro {
     @Override
     public String toString() {
         return "Carro{" +
-                "marca='" + marca + '\'' +
+                "id=" + id +
+                ", marca='" + marca + '\'' +
                 ", modelo='" + modelo + '\'' +
                 ", anoFabricacao=" + anoFabricacao +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Carro carro = (Carro) o;
+        return id == carro.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

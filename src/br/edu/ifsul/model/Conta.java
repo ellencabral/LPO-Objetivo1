@@ -1,13 +1,26 @@
 package br.edu.ifsul.model;
 
+import java.util.Objects;
+
 public class Conta {
+    private int id;
+
     private double saldo;
 
     public Conta(){
     }
 
-    public Conta(double saldo) {
+    public Conta(int id, double saldo) {
+        this.id = id;
         this.saldo = saldo;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public double getSaldo() {
@@ -35,7 +48,21 @@ public class Conta {
     @Override
     public String toString() {
         return "Conta{" +
-                "saldo=" + saldo +
+                "id=" + id +
+                ", saldo=" + saldo +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Conta conta = (Conta) o;
+        return id == conta.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
